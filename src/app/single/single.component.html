@@ -1,0 +1,19 @@
+<div>
+  <p>
+    <img src="{{article.photo}}" alt="">
+  </p>
+  <p>
+    @for (categorie of article.categories; track $index) {
+      <b>{{ categorie }}</b>
+    }
+  </p>
+  <div>
+    {{ article.slug }}
+  </div>
+  <div>
+    {{ article.content }}
+  </div>
+  <div>
+    {{ article.title }}
+  </div>
+</div>

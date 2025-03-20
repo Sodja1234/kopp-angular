@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { ArticleComponent } from '../article/article.component';
 import { Article } from '../models/article';
 import { NgFor } from '@angular/common';
+import { ArticleService } from '../services/article.service';
+import { inject } from '@angular/core';
 
 @Component({
   selector: 'app-list-article',
@@ -11,31 +13,9 @@ import { NgFor } from '@angular/common';
 })
 export class ListArticleComponent {
   articles!: Article[];
+  service: ArticleService = inject(ArticleService);
 
   ngOnInit() {
-    this.articles =[
-      {
-        id: 1,
-        title: 'Angular',
-        slug: 'angular',
-        content: 'Angular is a platform and framework for building single-page client applications using HTML and TypeScript. Angular is written in TypeScript. It implements core and optional functionality as a set of TypeScript libraries that you import into your applications.',
-        auteur: 'John Doe',
-        photo: 'https://angular.io/assets/images/logos/angular/angular.svg',
-        created_at: '19/03/2025',
-        nb_comments: 5,
-        categories: ['Angular', 'Frontend', 'Framework'],
-      },
-      {
-        id: 1,
-        title: 'Angular',
-        slug: 'angular',
-        content: 'Angular is a platform and framework for building single-page client applications using HTML and TypeScript. Angular is written in TypeScript. It implements core and optional functionality as a set of TypeScript libraries that you import into your applications.',
-        auteur: 'John Doe',
-        photo: 'https://angular.io/assets/images/logos/angular/angular.svg',
-        created_at: '19/03/2025',
-        nb_comments: 5,
-        categories: ['Angular', 'Frontend', 'Framework'],
-      }
-    ];
+    this.articles = this.service.getAll();
   }
 }
